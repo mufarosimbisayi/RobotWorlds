@@ -1,0 +1,31 @@
+# config with personal login info
+secrets/secrets.yaml
+secrets/secrets.json
+
+# pycache
+*.pyc
+
+# Visual Studio
+.vs/
+.vscode/
+
+# opened files (Excel, Word, Visio, etc.)
+~$*.*
+
+# ipython notebook
+*.ipynb
+.ipynb_checkpoints/
+
+# Intellij IDE
+.idea/
+
+# MacOS
+.DS_Store
+
+# log files
+*.log
+log.csv
+log_scheduler.txt
+
+# This folder stores virtual environment files in Pycharm - should not be in GIT.
+venv/
