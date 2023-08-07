@@ -15,5 +15,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024)
             if not data:
                 break
-            response = parse_request(json.loads(data.decode()))
+            data = json.loads(data.decode())
+            response = parse_request(data)
             conn.send(response.encode())

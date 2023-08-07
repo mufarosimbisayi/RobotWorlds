@@ -19,10 +19,10 @@ def create_request(user_input):
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    user_input = input("Talk to the server.\n")
+    user_input = input("Please give me the next command:\t")
     while user_input:
         request = create_request(user_input)
         s.sendall(request.encode())
         data = s.recv(1024)
         print(f"recieved status: {data.decode()}")
-        user_input = input("Please give me the next command\n")
+        user_input = input("Please give me the next command:\t")
