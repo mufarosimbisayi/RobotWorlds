@@ -17,4 +17,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 break
             data = json.loads(data.decode())
             response = parse_request(data)
-            conn.send(response.encode())
+            if type(response) is dict:
+                response = json.dumps(response)
+            conn.send(json.dumps(response).encode())

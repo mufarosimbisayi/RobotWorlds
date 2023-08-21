@@ -10,7 +10,7 @@ def create_request(user_input):
         request = {
             "robot": user_input.split(" ")[1],
             "command": "launch",
-            "arguments": []
+            "arguments": ["sniper", 5, 5]
         }
         return json.dumps(request)
     else:

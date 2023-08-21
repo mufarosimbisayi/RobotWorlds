@@ -1,4 +1,5 @@
 from position import Position
+import random
 
 
 class World:
@@ -16,6 +17,57 @@ class World:
         self._width = 50
         self._robots = []
         self._obstacles = []
+        self._maximum_robots = 10
+        self._visibility = 5
+        self._reload = 2
+        self._repair = 2
+        self._shields = 3
 
     def launch_robot(self, robot):
+        """launched a robot onto the world"""
+
+        robot.set_initial_position(self.get_random_position())
         self._robots.append(robot)
+
+    def get_random_position(self):
+        """Gets a random position that is currently unoccupied"""
+
+        while True:
+            x = random.randint(-int(self._width / 2), int(self._width / 2))
+            y = random.randint(-int(self._height / 2), int(self._height / 2))
+            position = Position((x, y))
+            if self.check_position(position):
+                return position
+
+    def check_position(self, position):
+        """Checks that the position is not occupied"""
+
+        if position == self._center:
+            return False
+        for robot in self._robots:
+            if position == robot.get_position():
+                return False
+        ### check obstacles when the obstacle class has been created.
+        return True
+
+    def has_space(self):
+        return len(self._robots) < self._maximum_robots
+
+    def get_shields_value(self):
+        return self._shields
+
+    def get_visibility_value(self):
+        return self._visibility
+
+    def get_reload_value(self):
+        return self._reload
+
+    def get_repair_value(self):
+        return self._repair
+
+    def unique_robot(self, new_robot):
+        for robot in self._robots:
+            if new_robot.name == robot.name:
+                return False
+        return True
+
