@@ -1,4 +1,4 @@
-from position import Position
+from server.src.position import Position
 import random
 
 

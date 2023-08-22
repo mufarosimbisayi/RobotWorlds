@@ -1,6 +1,6 @@
-from command import Command
-from world import World
-from robot import Robot
+from server.src.command import Command
+from server.src.world import World
+from server.src.robot import Robot
 
 
 class Launch(Command):
