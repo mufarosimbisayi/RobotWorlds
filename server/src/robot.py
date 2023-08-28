@@ -27,3 +27,13 @@ class Robot:
 
     def get_position(self):
         return self.position
+
+    def get_status(self):
+        """Gets the robots status"""
+
+        return self.status
+
+    def get_direction(self):
+        """Gets the current direction of the robot"""
+
+        return self.direction

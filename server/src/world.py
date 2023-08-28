@@ -66,8 +66,17 @@ class World:
         return self._repair
 
     def unique_robot(self, new_robot):
+        """Checks if the world has enough space for another robot"""
+
         for robot in self._robots:
             if new_robot.name == robot.name:
                 return False
         return True
 
+    def get_robot(self, robot_name):
+        """Finds and returns a robot by name"""
+
+        for robot in self._robots:
+            if robot_name == robot.name:
+                return robot
+        return None
