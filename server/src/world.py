@@ -36,19 +36,26 @@ class World:
             x = random.randint(-int(self._width / 2), int(self._width / 2))
             y = random.randint(-int(self._height / 2), int(self._height / 2))
             position = Position((x, y))
-            if self.check_position(position):
+            position_status = self.check_position(position)
+            if position_status == "nothing":
                 return position
 
     def check_position(self, position):
         """Checks that the position is not occupied"""
 
-        if position == self._center:
-            return False
+        if position.x_coordinate >= int(self._width / 2) or \
+                position.x_coordinate <= -int(self._width / 2):
+            return "edge"
+        if position.y_coordinate >= int(self._height / 2) or \
+                position.y_coordinate <= -int(self._height / 2):
+            return "edge"
         for robot in self._robots:
             if position == robot.get_position():
-                return False
-        ### check obstacles when the obstacle class has been created.
-        return True
+                return "robot"
+        for obstacle in self._obstacles:
+            if obstacle == position:
+                return "obstacle"
+        return "nothing"
 
     def has_space(self):
         return len(self._robots) < self._maximum_robots
@@ -80,3 +87,8 @@ class World:
             if robot_name == robot.name:
                 return robot
         return None
+
+    def add_obstacles(self, position):
+        """Adds an obstacle to the worlds obstacles list"""
+
+        self._obstacles.append(position)

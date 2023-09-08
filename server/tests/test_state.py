@@ -17,7 +17,7 @@ def test_state_success():
     launch_response = launch_command.execute(test_data_robot)
     state_command = State()
     state_response = state_command.execute(test_data_state)
-    print(state_response)
+
     assert state_response["position"][0] == launch_response["state"]["position"][0]
     assert state_response["position"][1] == launch_response["state"]["position"][1]
     assert state_response["direction"] == launch_response["state"]["direction"]
@@ -26,7 +26,7 @@ def test_state_success():
     assert state_response["status"] == launch_response["state"]["status"]
 
 
-def test_invalid_request():
+def test_invalid_state_request():
     test_data_robot = {
         "robot": "Tom_state",
         "command": "launch",

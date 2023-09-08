@@ -12,7 +12,7 @@ def test_launch_success():
     assert response["result"] == "OK"
 
 
-def test_invalid_request():
+def test_invalid_launch_request():
     test_data = {
         "robot": "Tom",
         "command": "launch",
