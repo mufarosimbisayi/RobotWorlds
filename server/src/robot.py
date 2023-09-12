@@ -37,3 +37,8 @@ class Robot:
         """Gets the current direction of the robot"""
 
         return self.direction
+
+    def set_direction(self, direction):
+        """Sets the new direction for the robot"""
+
+        self.direction = direction
