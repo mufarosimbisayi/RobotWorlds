@@ -25,8 +25,10 @@ class Robot:
     def get_shots(self):
         return self.shots
 
-    def get_position(self):
-        return self.position
+    def set_position(self, position):
+        """Set the current position"""
+
+        self.position = position
 
     def get_status(self):
         """Gets the robots status"""
